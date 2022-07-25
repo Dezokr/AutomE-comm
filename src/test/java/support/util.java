@@ -21,7 +21,7 @@ public class util extends hooks {
     }
 
     public void defaultWindow(){
-        driver.close();
+        //driver.close();
         driver.switchTo().window("");
     }
 
