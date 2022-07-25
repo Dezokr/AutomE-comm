@@ -14,6 +14,7 @@ public class loginPage extends util {
     @FindBy(xpath = "//button[@name='SubmitCreate']")
     protected WebElement btn_create;
     @FindBy(xpath = "//h4[text()='Resource Limit Is Reached'") protected WebElement limit;
+    @FindBy(xpath = "//div[@id='create_account_error']") protected WebElement emailRegistered;
 
     public loginPage() {
         PageFactory.initElements(driver, this);
@@ -29,6 +30,16 @@ public class loginPage extends util {
 
     public void clickCreate() {
         wait30.until(ExpectedConditions.elementToBeClickable(btn_create)).click();
+    }
+    public void validateEmailRegistered(){
+        boolean existe = emailRegistered.isDisplayed();
+
+        if(existe){
+            System.out.println("Correo no registrado");
+        } else {
+            System.out.println("El correo ya ha sido registrado");
+        }
+
     }
 
 }

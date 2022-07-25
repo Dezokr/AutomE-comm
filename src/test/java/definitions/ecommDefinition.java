@@ -2,13 +2,14 @@ package definitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.es.Cuando;
-import io.cucumber.java.es.Dado;
-import io.cucumber.java.es.E;
-import io.cucumber.java.es.Y;
 import pageObject.loginPage;
 import pageObject.registerPage;
+
+import java.io.IOException;
+
+import static support.util.getEvidences;
 
 public class ecommDefinition {
     /*VARIABLES*/
@@ -31,8 +32,9 @@ public class ecommDefinition {
     }
 
     @And("ingreso el correo {string}")
-    public void ingresoElCorreo(String email) {
+    public void ingresoElCorreo(String email) throws IOException {
         login.fillEmail(email);
+        getEvidences();
         login.clickCreate();
     }
 
@@ -85,9 +87,85 @@ public class ecommDefinition {
     }
 
     @And("{string} quiero recibir ofertas")
-    public void quieroRecibirOfertas(String offers) {
+    public void quieroRecibirOfertas(String offers) throws IOException {
         register.receiveOffers(offers);
+        getEvidences();
     }
 
 
+    @And("ingreso el nombre para la direccion {string}")
+    public void ingresoElNombreParaLaDireccion(String name) {
+        register.fillAddressFirstName(name);
+    }
+
+    @And("ingreso el apellido para la direccion {string}")
+    public void ingresoElApellidoParaLaDireccion(String last) {
+        register.fillAddressLastName(last);
+    }
+
+    @And("ingreso la compania {string}")
+    public void ingresoLaCompania(String company) {
+        register.fillCompany(company);
+    }
+
+    @And("ingreso la direccion {string}")
+    public void ingresoLaDireccion(String address) {
+        register.fillAddressOne(address);
+    }
+
+    @And("ingreso la segunda direccion {string}")
+    public void ingresoLaSegundaDireccion(String address2) {
+        register.fillAddressOne(address2);
+    }
+
+    @And("ingreso la ciudad {string}")
+    public void ingresoLaCiudad(String city) {
+        register.fillCity(city);
+    }
+
+    @And("selecciono el estado de {string}")
+    public void seleccionoElEstadoDe(String state) {
+        register.selectState(state);
+    }
+
+    @And("ingreso el codigo postal {string}")
+    public void ingresoElCodigoPostal(String postal) {
+        register.fillPostalCode(postal);
+    }
+
+    @And("selecciono el pais {string}")
+    public void seleccionoElPais(String country) {
+        register.selectCountry(country);
+    }
+
+    @And("ingreso informacion adicional {string}")
+    public void ingresoInformacionAdicional(String info) {
+        register.fillAdditionalInfo(info);
+    }
+
+    @And("ingreso el numero de casa {string}")
+    public void ingresoElNumeroDeCasa(String phone) {
+        register.fillPhoneNumber(phone);
+    }
+
+    @And("ingreso numero de celular {string}")
+    public void ingresoNumeroDeCelular(String mobile) {
+        register.fillMobilePhone(mobile);
+    }
+
+    @And("ingreso el alias {string} para la direccion")
+    public void ingresoElAliasParaLaDireccion(String alias) throws IOException{
+        register.fillAddressAlias(alias);
+        getEvidences();
+    }
+
+    @Then("realizo el registro")
+    public void realizoElRegistro() {
+        register.clickRegister();
+    }
+
+    @Then("valido si email ya esta registrado")
+    public void validoSiEmailYaEstaRegistrado() {
+        login.validateEmailRegistered();
+    }
 }

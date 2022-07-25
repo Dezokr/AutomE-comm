@@ -140,6 +140,7 @@ public class registerPage extends util {
     }
 
     public void fillAddressAlias(String aliasS){//required
+        addressAlias.clear();
         wait30.until(ExpectedConditions.elementToBeClickable(addressAlias)).sendKeys(aliasS);
     }
 
