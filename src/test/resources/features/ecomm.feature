@@ -28,6 +28,7 @@
       And ingreso el numero de casa "<phone>"
       And ingreso numero de celular "<mobile>"
       And ingreso el alias "<alias>" para la direccion
+      And ingreso el alias "<numero>" para llamar
       Then realizo el registro
       Examples:
         | email             | gender | name  | last  | passwd | day | month | year | news | offers | company | address            | address2 | city    | state      | postal | country       | info             | phone     | mobile | alias |
